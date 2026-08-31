@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>吳方睿的每日簡報（虛構範例）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1C1C1A; --paper:#F0EFEB; --card:#FBFAF7;
+  --muted:#8F8E88; --faint:#C6C5BF; --grid:#DEDDD6;
+  --g2:#4A4944; --g3:#6A6963; --g5:#B0AFA9; --g7:#D8D7D1;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --ink:#F0EFEB; --paper:#141412; --card:#1C1C1A;
+    --muted:#8F8E88; --faint:#4A4944; --grid:#2A2A27;
+    --g2:#C6C5BF; --g3:#B0AFA9; --g5:#6A6963; --g7:#3A3A36;
+  }
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:'Inter','Noto Sans TC',system-ui,sans-serif;
+  font-weight:400; line-height:1.78;
+  -webkit-font-smoothing:antialiased;
+  padding:40px 20px 80px;
+}
+.wrap{max-width:720px;margin:0 auto}
+
+/* ── 抬頭 ── */
+.top{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:10px}
+h1{font-size:19px;font-weight:700;letter-spacing:-.02em;line-height:1.4}
+.stamp{font-size:9.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.demo{
+  display:inline-block;margin-top:14px;padding:5px 11px;
+  border:1px solid var(--grid);border-radius:99px;
+  font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+}
+.rule{height:1px;background:var(--grid);margin:26px 0 0}
+
+/* ── 卡片 ── */
+.card{background:var(--card);border:1px solid var(--grid);border-radius:24px;padding:32px;margin-top:22px}
+.label{font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+h2{font-size:15.5px;font-weight:700;letter-spacing:-.015em;line-height:1.5;margin-bottom:10px}
+p{font-size:13.5px;line-height:1.78}
+p + p{margin-top:11px}
+.src{font-size:9.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:12px}
+.act{
+  margin-top:18px;padding-top:16px;border-top:1px solid var(--grid);
+  font-size:13.5px;font-weight:700;
+}
+.act::before{content:'建議動作　';font-size:9.5px;font-weight:600;letter-spacing:.14em;color:var(--muted)}
+
+/* ── 行程 ── */
+.row{display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:baseline;padding:11px 0;border-top:1px solid var(--grid)}
+.row:first-of-type{border-top:0}
+.time{font-size:13.5px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.what{font-size:13.5px}
+.who{font-size:12px;color:var(--muted)}
+.tag{font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);border:1px solid var(--grid);border-radius:99px;padding:3px 9px;white-space:nowrap}
+.gap{font-size:12px;color:var(--muted);padding:9px 0 9px 78px;border-top:1px solid var(--grid)}
+
+/* ── 逾期：長度編碼、不用顏色 ── */
+.od{display:grid;grid-template-columns:1fr 120px 52px;gap:14px;align-items:center;padding:12px 0;border-top:1px solid var(--grid)}
+.od:first-of-type{border-top:0}
+.od-t{font-size:13.5px}
+.bar{height:8px;background:var(--g7);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--g2);border-radius:99px}
+.days{font-size:13.5px;font-weight:800;font-variant-numeric:tabular-nums;text-align:right}
+.days small{font-size:11px;font-weight:500;color:var(--muted)}
+.note{font-size:12px;color:var(--muted);margin-top:14px;padding-top:14px;border-top:1px solid var(--grid)}
+
+/* ── 模組：我在跟的專案 ── */
+.proj{display:grid;grid-template-columns:1fr 96px;gap:14px;align-items:center;padding:12px 0;border-top:1px solid var(--grid)}
+.proj:first-of-type{border-top:0}
+.proj-n{font-size:13.5px;font-weight:700}
+.proj-s{font-size:12px;color:var(--muted);margin-top:2px}
+.pct{font-size:13.5px;font-weight:800;font-variant-numeric:tabular-nums;text-align:right}
+
+/* ── 透明度 ── */
+.tp{margin-top:22px;padding:26px 4px 0;border-top:1px solid var(--grid)}
+.tp p{font-size:12px;color:var(--muted);line-height:1.9}
+.tp b{font-weight:700;color:var(--g3)}
+.foot{margin-top:30px;font-size:9.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);line-height:2}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <h1>早安，方睿</h1>
+    <div class="stamp">2026 / 03 / 12　週四　07:30 送出</div>
+  </div>
+  <div class="demo">虛構範例 · 人物與資料皆為杜撰</div>
+  <div class="rule"></div>
+
+  <!-- 1 ─────────────────────────────────────────── -->
+  <section class="card">
+    <div class="label">今天最重要的一件事</div>
+    <h2>宏達的續約報價昨天下午被退回，而你今天下午三點就要跟他們開會。</h2>
+    <p>採購回信只寫「請重新評估」，沒有給理由。同一封信副本收件人多了一位你沒見過的財務主管。</p>
+    <p><b>它連動到什麼：</b>宏達佔你這一季在追金額的四成。這場會原本排的是「確認導入時程」，議程還沒改——如果照原議程開，價格這件事會在最後十分鐘才被提出來，那時候你沒有準備。</p>
+    <div class="src">來源　信箱 03/11 16:42 · 行事曆 03/12 15:00 · 專案表「宏達續約」</div>
+    <div class="act">開會前先問採購一句「這次評估主要看哪個部分」，把議程第一項換成價格。</div>
+  </section>
+
+  <!-- 2 ─────────────────────────────────────────── -->
+  <section class="card">
+    <div class="label">今天的行程</div>
+    <div class="row">
+      <div class="time">10:00</div>
+      <div><div class="what">週會</div><div class="who">部門 8 人</div></div>
+      <div class="tag">你主持</div>
+    </div>
+    <div class="gap">10:30 – 15:00　連續四個半小時沒有安排</div>
+    <div class="row">
+      <div class="time">15:00</div>
+      <div><div class="what">宏達 · 續約會議</div><div class="who">對方 3 人 · 含財務主管</div></div>
+      <div class="tag">外部</div>
+    </div>
+    <div class="row">
+      <div class="time">17:00</div>
+      <div><div class="what">新人 onboarding 交接</div><div class="who">與 Ray</div></div>
+      <div class="tag">你主持</div>
+    </div>
+  </section>
+
+  <!-- 3 ─────────────────────────────────────────── -->
+  <section class="card">
+    <div class="label">逾期任務</div>
+    <div class="od">
+      <div class="od-t">整理 Q1 客戶回訪紀錄</div>
+      <div class="bar"><i style="width:100%"></i></div>
+      <div class="days">73<small> 天</small></div>
+    </div>
+    <div class="od">
+      <div class="od-t">宏達導入時程表更新</div>
+      <div class="bar"><i style="width:16%"></i></div>
+      <div class="days">12<small> 天</small></div>
+    </div>
+    <div class="od">
+      <div class="od-t">回覆合作提案 · 沛green</div>
+      <div class="bar"><i style="width:5%"></i></div>
+      <div class="days">4<small> 天</small></div>
+    </div>
+    <p class="note">逾期 73 天那一筆通常不是進度落後、是狀態沒更新。要嘛今天關掉它，要嘛給它一個新的到期日。</p>
+  </section>
+
+  <!-- 4 ─────────────────────────────────────────── -->
+  <section class="card">
+    <div class="label">我在跟的專案</div>
+    <div class="proj">
+      <div><div class="proj-n">宏達 · 續約</div><div class="proj-s">卡在報價 · 今天有會</div></div>
+      <div class="pct">60%</div>
+    </div>
+    <div class="proj">
+      <div><div class="proj-n">立昇 · 二期導入</div><div class="proj-s">等對方確認窗口 · 已等 6 天</div></div>
+      <div class="pct">35%</div>
+    </div>
+    <div class="proj">
+      <div><div class="proj-n">沛green · 新案</div><div class="proj-s">提案已送 · 尚未回覆</div></div>
+      <div class="pct">10%</div>
+    </div>
+  </section>
+
+  <!-- 透明度 ─────────────────────────────────────── -->
+  <div class="tp">
+    <p><b>讀了什麼</b>　你的信箱（近 3 天）、行事曆（今天）、任務表（未完成）、專案表（你負責的 3 筆）。</p>
+    <p><b>沒讀什麼</b>　群組聊天、共用雲端硬碟、任何標記為私人的行事曆項目。你沒授權的來源我不會碰。</p>
+    <p><b>怎麼停</b>　回信寫「停掉簡報」就不會再收到，不用找設定頁。想改內容就說「以後不要看逾期任務」。</p>
+    <p><b>這一版不會要你做任何事</b>　上面那句建議動作只是建議。這份簡報不會替你回信、不會改你的行事曆、不會動你的任務狀態。</p>
+  </div>
+
+  <div class="foot">
+    虛構範例 · 由 daily-brief skill 產出<br>
+    方睿科技 FUNRAISE · CC BY-NC 4.0
+  </div>
+
+</div>
+</body>
+</html>

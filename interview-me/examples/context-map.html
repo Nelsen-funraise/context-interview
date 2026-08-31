@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>吳方睿的脈絡訊號圖（虛構範例）</title>
+<style>
+  :root{
+    --ink:#1C1C1A; --paper:#F0EFEB; --card:#FBFAF7;
+    --muted:#8F8E88; --faint:#C6C5BF; --grid:#DEDDD6;
+    --g1:#1C1C1A; --g2:#4A4944; --g3:#6A6963; --g4:#8F8E88; --g5:#B0AFA9; --g6:#C6C5BF; --g7:#D8D7D1;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#EDECE7; --paper:#141412; --card:#1C1C1A;
+      --muted:#8F8E88; --faint:#5A5954; --grid:#2E2D2A;
+      --g1:#EDECE7; --g2:#C6C5BF; --g3:#A5A49E; --g4:#8F8E88; --g5:#6A6963; --g6:#4A4944; --g7:#3A3935;
+    }
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--paper);color:var(--ink);
+    font-family:'Inter','Noto Sans TC',-apple-system,sans-serif;
+    font-size:13.5px;line-height:1.78;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:860px;margin:0 auto;padding:56px 28px 96px}
+  @media(max-width:600px){.wrap{padding:36px 16px 64px}}
+  .eyebrow{font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  h1{font-size:30px;font-weight:800;letter-spacing:-.025em;line-height:1.22;margin:10px 0 0}
+  @media(max-width:600px){h1{font-size:24px}}
+  .lede{font-size:15px;margin-top:14px;max-width:62ch}
+  .lede strong{font-weight:800}
+  .meta{margin-top:22px;padding-top:16px;border-top:1px solid var(--grid);display:flex;flex-wrap:wrap;gap:26px}
+  .meta div{font-size:11.5px}
+  .meta .k{display:block;font-size:9.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+  .meta .v{font-weight:700}
+  section{margin-top:54px}
+  h2{font-size:19px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+  .sub{font-size:12px;color:var(--muted);margin-bottom:20px;max-width:70ch}
+  .card{background:var(--card);border:1px solid var(--grid);border-radius:24px;padding:28px;transition:transform .18s ease}
+  @media(max-width:600px){.card{padding:20px;border-radius:18px}}
+  .src{margin-top:12px;font-size:9.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);line-height:1.9}
+  /* stat strip */
+  .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:26px}
+  @media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:var(--card);border:1px solid var(--grid);border-radius:18px;padding:16px 16px 13px}
+  .stat .n{font-size:31px;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1.05}
+  .stat .l{font-size:9.5px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+  /* zone item chips */
+  .zones{display:grid;grid-template-columns:38fr 22fr 22fr 18fr;gap:12px;margin-top:14px}
+  @media(max-width:700px){.zones{grid-template-columns:1fr 1fr}}
+  .zone h3{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px}
+  .zone h3 .c{color:var(--muted);font-weight:600;margin-left:4px}
+  .it{border-radius:12px;padding:9px 12px;margin-bottom:8px;font-size:12px;line-height:1.55}
+  .it b{display:block;font-weight:700}
+  .it span{font-size:10.5px;color:var(--muted)}
+  .it.s1{background:var(--ink);border:1.5px solid var(--ink)}
+  .it.s1 b{color:var(--paper)} .it.s1 span{color:var(--faint)}
+  .it.s2{background:var(--card);border:1.5px solid var(--ink)}
+  .it.s3{background:none;border:1.5px dashed var(--g4)}
+  .it.s4{background:none;border:1.5px dotted var(--g5)}
+  .it.s4 b{color:var(--g3)}
+  .tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.08em;border-radius:99px;padding:1px 8px;margin-left:6px;vertical-align:1px}
+  .tag.done{background:var(--ink);color:var(--paper)}
+  /* bars */
+  .bar{display:flex;align-items:center;gap:14px;margin-bottom:13px}
+  .bar .lb{width:170px;flex-shrink:0;font-size:12.5px;font-weight:600;text-align:right}
+  .bar .tr{flex:1;height:15px;border-radius:99px;position:relative}
+  .bar .fl{height:15px;border-radius:99px}
+  .bar .vl{width:44px;font-size:13px;font-weight:800;font-variant-numeric:tabular-nums}
+  /* rhythm */
+  .week{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+  .day{border:1px solid var(--grid);border-radius:14px;padding:12px 10px;background:var(--card)}
+  .day .d{font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .day .ev{margin-top:9px;background:var(--ink);color:var(--paper);border-radius:8px;padding:5px 8px;font-size:10.5px;font-weight:700;line-height:1.4}
+  .day .ev span{display:block;font-weight:500;color:var(--faint);font-size:9.5px}
+  /* callout */
+  .ceil{border:2px solid var(--ink);border-radius:20px;padding:22px 26px;margin-top:16px}
+  .ceil p{font-size:16.5px;font-weight:800;letter-spacing:-.01em;line-height:1.55}
+  .ceil .why{font-size:12px;color:var(--muted);font-weight:400;margin-top:8px}
+  svg{display:block;width:100%;height:auto;overflow:visible}
+  /* rule card */
+  .rule{font-size:17px;font-weight:800;line-height:1.6;letter-spacing:-.01em}
+  .exc{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .exc div{border:1.5px dashed var(--g4);border-radius:12px;padding:8px 13px;font-size:11.5px;line-height:1.5}
+  .exc b{display:block;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .handoff{margin-top:14px;padding-top:12px;border-top:1px solid var(--grid);font-size:12px}
+  /* steps / discuss */
+  .step{display:flex;gap:13px;align-items:flex-start}
+  .step input{margin-top:5px;width:16px;height:16px;accent-color:var(--ink)}
+  .step .t{display:block;font-size:14px;font-weight:700}
+  .step .d{display:block;font-size:11.5px;color:var(--muted);line-height:1.65}
+  .q{border-top:1px solid var(--grid);padding:13px 2px}
+  .q:first-child{border-top:none}
+  .q .to{font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .q .qq{font-size:13.5px;font-weight:700;margin-top:2px}
+  .q .qd{font-size:11.5px;color:var(--muted)}
+  /* accept dates */
+  .dates{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .date{border:1px solid var(--grid);border-radius:14px;padding:14px;background:var(--card)}
+  .date .dd{font-size:21px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+  .date .dl{font-size:10.5px;color:var(--muted);margin-top:3px;line-height:1.5}
+  footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--grid)}
+  @media print{body{background:#fff} .card{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="eyebrow">INTERVIEW-ME · 第一段產出 · 脈絡訊號圖 v1（問完更新）</span>
+    <h1>吳方睿的脈絡訊號圖（虛構範例）</h1>
+    <p class="lede">你的資料幾乎都進系統了——訊號斷掉的地方不是資料，是<strong>你腦子裡的優先順序沒有被寫下來</strong>。右邊那一小格，就是所有自動化的天花板。</p>
+    <div class="meta">
+      <div><span class="k">受訪者</span><span class="v">吳方睿（虛構範例）· 業務部</span></div>
+      <div><span class="k">日期</span><span class="v">2026-08-20</span></div>
+      <div><span class="k">自查</span><span class="v">11 次工具呼叫，先查後問</span></div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n">59</div><div class="l">專案</div></div>
+      <div class="stat"><div class="n">407</div><div class="l">份產出</div></div>
+      <div class="stat"><div class="n">89</div><div class="l">Skill</div></div>
+      <div class="stat"><div class="n">174</div><div class="l">Memory</div></div>
+      <div class="stat"><div class="n">11</div><div class="l">排程在跑</div></div>
+    </div>
+  </header>
+
+  <section>
+    <h2>訊號由左往右衰減</h2>
+    <p class="sub">實心＝系統看得到；描邊＝接上就看得到；虛線＝只有你看得到；點狀＝連你都只放在腦子裡。</p>
+    <div class="card" style="padding:30px 26px 22px">
+      <svg viewBox="0 -30 800 182" role="img" aria-label="脈絡訊號圖：由左到右四區——已連上（實心）、可連未連（描邊）、只有你有（虛線）、沒被記錄（點狀），訊號逐區衰減"><text x="6.0" y="-14" font-size="10" font-weight="700" letter-spacing="1.1" fill="var(--ink)">已經連上</text><text x="6.0" y="-2" font-size="9" font-weight="600" fill="var(--muted)">6 項</text><line x1="304.0" y1="-26" x2="304.0" y2="118" stroke="var(--grid)" stroke-width="1"/><text x="310.0" y="-14" font-size="10" font-weight="700" letter-spacing="1.1" fill="var(--ink)">可以連，還沒連</text><text x="310.0" y="-2" font-size="9" font-weight="600" fill="var(--muted)">2 項</text><line x1="480.0" y1="-26" x2="480.0" y2="118" stroke="var(--grid)" stroke-width="1"/><text x="486.0" y="-14" font-size="10" font-weight="700" letter-spacing="1.1" fill="var(--ink)">只有你有</text><text x="486.0" y="-2" font-size="9" font-weight="600" fill="var(--muted)">2 項</text><line x1="656.0" y1="-26" x2="656.0" y2="118" stroke="var(--grid)" stroke-width="1"/><text x="662.0" y="-14" font-size="10" font-weight="700" letter-spacing="1.1" fill="var(--ink)">沒被記錄</text><text x="662.0" y="-2" font-size="9" font-weight="600" fill="var(--muted)">2 → 1 項</text><rect x="4.0" y="18.8" width="3.2" height="99.2" rx="1.6" fill="var(--ink)"/><rect x="11.0" y="17.4" width="3.2" height="100.6" rx="1.6" fill="var(--ink)"/><rect x="18.0" y="9.3" width="3.2" height="108.7" rx="1.6" fill="var(--ink)"/><rect x="25.0" y="27.8" width="3.2" height="90.2" rx="1.6" fill="var(--ink)"/><rect x="32.0" y="3.7" width="3.2" height="114.3" rx="1.6" fill="var(--ink)"/><rect x="39.0" y="32.2" width="3.2" height="85.8" rx="1.6" fill="var(--ink)"/><rect x="46.0" y="5.5" width="3.2" height="112.5" rx="1.6" fill="var(--ink)"/><rect x="53.0" y="28.8" width="3.2" height="89.2" rx="1.6" fill="var(--ink)"/><rect x="60.0" y="14.2" width="3.2" height="103.8" rx="1.6" fill="var(--ink)"/><rect x="67.0" y="20.4" width="3.2" height="97.6" rx="1.6" fill="var(--ink)"/><rect x="74.0" y="25.5" width="3.2" height="92.5" rx="1.6" fill="var(--ink)"/><rect x="81.0" y="12.0" width="3.2" height="106.0" rx="1.6" fill="var(--ink)"/><rect x="88.0" y="34.1" width="3.2" height="83.9" rx="1.6" fill="var(--ink)"/><rect x="95.0" y="8.7" width="3.2" height="109.3" rx="1.6" fill="var(--ink)"/><rect x="102.0" y="35.9" width="3.2" height="82.1" rx="1.6" fill="var(--ink)"/><rect x="109.0" y="12.8" width="3.2" height="105.2" rx="1.6" fill="var(--ink)"/><rect x="116.0" y="30.9" width="3.2" height="87.1" rx="1.6" fill="var(--ink)"/><rect x="123.0" y="22.5" width="3.2" height="95.5" rx="1.6" fill="var(--ink)"/><rect x="130.0" y="22.3" width="3.2" height="95.7" rx="1.6" fill="var(--ink)"/><rect x="137.0" y="33.1" width="3.2" height="84.9" rx="1.6" fill="var(--ink)"/><rect x="144.0" y="15.5" width="3.2" height="102.5" rx="1.6" fill="var(--ink)"/><rect x="151.0" y="39.5" width="3.2" height="78.5" rx="1.6" fill="var(--ink)"/><rect x="158.0" y="14.6" width="3.2" height="103.4" rx="1.6" fill="var(--ink)"/><rect x="165.0" y="39.1" width="3.2" height="78.9" rx="1.6" fill="var(--ink)"/><rect x="172.0" y="20.5" width="3.2" height="97.5" rx="1.6" fill="var(--ink)"/><rect x="179.0" y="32.8" width="3.2" height="85.2" rx="1.6" fill="var(--ink)"/><rect x="186.0" y="30.6" width="3.2" height="87.4" rx="1.6" fill="var(--ink)"/><rect x="193.0" y="24.7" width="3.2" height="93.3" rx="1.6" fill="var(--ink)"/><rect x="200.0" y="39.9" width="3.2" height="78.1" rx="1.6" fill="var(--ink)"/><rect x="207.0" y="19.8" width="3.2" height="98.2" rx="1.6" fill="var(--ink)"/><rect x="214.0" y="44.2" width="3.2" height="73.8" rx="1.6" fill="var(--ink)"/><rect x="221.0" y="21.1" width="3.2" height="96.9" rx="1.6" fill="var(--ink)"/><rect x="228.0" y="41.8" width="3.2" height="76.2" rx="1.6" fill="var(--ink)"/><rect x="235.0" y="28.4" width="3.2" height="89.6" rx="1.6" fill="var(--ink)"/><rect x="242.0" y="34.9" width="3.2" height="83.1" rx="1.6" fill="var(--ink)"/><rect x="249.0" y="38.3" width="3.2" height="79.7" rx="1.6" fill="var(--ink)"/><rect x="256.0" y="27.7" width="3.2" height="90.3" rx="1.6" fill="var(--ink)"/><rect x="263.0" y="46.1" width="3.2" height="71.9" rx="1.6" fill="var(--ink)"/><rect x="270.0" y="24.8" width="3.2" height="93.2" rx="1.6" fill="var(--ink)"/><rect x="277.0" y="48.2" width="3.2" height="69.8" rx="1.6" fill="var(--ink)"/><rect x="284.0" y="28.1" width="3.2" height="89.9" rx="1.6" fill="var(--ink)"/><rect x="291.0" y="44.3" width="3.2" height="73.7" rx="1.6" fill="var(--ink)"/><rect x="298.0" y="36.3" width="3.2" height="81.7" rx="1.6" fill="var(--ink)"/><rect x="308.0" y="50.0" width="3.2" height="68.0" rx="1.6" fill="none" stroke="var(--g2)" stroke-width="1.1"/><rect x="319.0" y="31.4" width="3.2" height="86.6" rx="1.6" fill="none" stroke="var(--g2)" stroke-width="1.1"/><rect x="330.0" y="47.5" width="3.2" height="70.5" rx="1.6" fill="none" stroke="var(--g2)" stroke-width="1.1"/><rect x="341.0" y="38.8" width="3.2" height="79.2" rx="1.6" fill="none" stroke="var(--g2)" stroke-width="1.1"/><rect x="352.0" y="42.9" width="3.2" height="75.1" rx="1.6" fill="none" stroke="var(--g2)" stroke-width="1.1"/><rect x="363.0" y="47.0" width="3.2" height="71.0" rx="1.6" fill="none" stroke="var(--g2)" stroke-width="1.1"/><rect x="374.0" y="38.6" width="3.2" height="79.4" rx="1.6" fill="none" stroke="var(--g2)" stroke-width="1.1"/><rect x="385.0" y="53.8" width="3.2" height="64.2" rx="1.6" fill="none" stroke="var(--g2)" stroke-width="1.1"/><rect x="396.0" y="36.8" width="3.2" height="81.2" rx="1.6" fill="none" stroke="var(--g2)" stroke-width="1.1"/><rect x="407.0" y="57.4" width="3.2" height="60.6" rx="1.6" fill="none" stroke="var(--g2)" stroke-width="1.1"/><rect x="418.0" y="38.6" width="3.2" height="79.4" rx="1.6" fill="none" stroke="var(--g2)" stroke-width="1.1"/><rect x="429.0" y="57.3" width="3.2" height="60.7" rx="1.6" fill="none" stroke="var(--g2)" stroke-width="1.1"/><rect x="440.0" y="43.9" width="3.2" height="74.1" rx="1.6" fill="none" stroke="var(--g2)" stroke-width="1.1"/><rect x="451.0" y="54.3" width="3.2" height="63.7" rx="1.6" fill="none" stroke="var(--g2)" stroke-width="1.1"/><rect x="462.0" y="51.1" width="3.2" height="66.9" rx="1.6" fill="none" stroke="var(--g2)" stroke-width="1.1"/><rect x="473.0" y="50.3" width="3.2" height="67.7" rx="1.6" fill="none" stroke="var(--g2)" stroke-width="1.1"/><line x1="485.6" y1="58.3" x2="485.6" y2="118" stroke="var(--g4)" stroke-width="2.6" stroke-dasharray="4 4" stroke-linecap="round"/><line x1="501.6" y1="53.4" x2="501.6" y2="118" stroke="var(--g4)" stroke-width="2.6" stroke-dasharray="4 4" stroke-linecap="round"/><line x1="517.6" y1="53.7" x2="517.6" y2="118" stroke="var(--g4)" stroke-width="2.6" stroke-dasharray="4 4" stroke-linecap="round"/><line x1="533.6" y1="62.7" x2="533.6" y2="118" stroke="var(--g4)" stroke-width="2.6" stroke-dasharray="4 4" stroke-linecap="round"/><line x1="549.6" y1="51.1" x2="549.6" y2="118" stroke="var(--g4)" stroke-width="2.6" stroke-dasharray="4 4" stroke-linecap="round"/><line x1="565.6" y1="68.2" x2="565.6" y2="118" stroke="var(--g4)" stroke-width="2.6" stroke-dasharray="4 4" stroke-linecap="round"/><line x1="581.6" y1="53.5" x2="581.6" y2="118" stroke="var(--g4)" stroke-width="2.6" stroke-dasharray="4 4" stroke-linecap="round"/><line x1="597.6" y1="68.3" x2="597.6" y2="118" stroke="var(--g4)" stroke-width="2.6" stroke-dasharray="4 4" stroke-linecap="round"/><line x1="613.6" y1="60.5" x2="613.6" y2="118" stroke="var(--g4)" stroke-width="2.6" stroke-dasharray="4 4" stroke-linecap="round"/><line x1="629.6" y1="65.1" x2="629.6" y2="118" stroke="var(--g4)" stroke-width="2.6" stroke-dasharray="4 4" stroke-linecap="round"/><line x1="645.6" y1="69.1" x2="645.6" y2="118" stroke="var(--g4)" stroke-width="2.6" stroke-dasharray="4 4" stroke-linecap="round"/><circle cx="661.6" cy="114.0" r="1.7" fill="var(--g5)"/><circle cx="661.6" cy="95.5" r="1.7" fill="var(--g5)"/><circle cx="661.6" cy="76.9" r="1.7" fill="var(--g5)"/><circle cx="683.6" cy="114.0" r="1.7" fill="var(--g5)"/><circle cx="683.6" cy="97.3" r="1.7" fill="var(--g5)"/><circle cx="683.6" cy="80.7" r="1.7" fill="var(--g5)"/><circle cx="705.6" cy="114.0" r="1.7" fill="var(--g5)"/><circle cx="705.6" cy="99.3" r="1.7" fill="var(--g5)"/><circle cx="705.6" cy="84.6" r="1.7" fill="var(--g5)"/><circle cx="727.6" cy="114.0" r="1.7" fill="var(--g5)"/><circle cx="727.6" cy="94.2" r="1.7" fill="var(--g5)"/><circle cx="749.6" cy="114.0" r="1.7" fill="var(--g5)"/><circle cx="749.6" cy="95.4" r="1.7" fill="var(--g5)"/><circle cx="771.6" cy="114.0" r="1.7" fill="var(--g5)"/><circle cx="771.6" cy="95.4" r="1.7" fill="var(--g5)"/><circle cx="793.6" cy="114.0" r="1.7" fill="var(--g5)"/><circle cx="793.6" cy="94.8" r="1.7" fill="var(--g5)"/><line x1="0" y1="118" x2="800" y2="118" stroke="var(--grid)" stroke-width="1.5"/>
+      <g>
+        <line x1="798" y1="-26" x2="798" y2="118" stroke="var(--ink)" stroke-width="2"/>
+        <text x="790" y="134" text-anchor="end" font-size="10" font-weight="800" fill="var(--ink)">▲ 自動化的天花板在這裡</text>
+      </g></svg>
+      <div class="zones">
+        <div class="zone">
+          <h3>已經連上<span class="c">・6</span></h3>
+          <div class="it s1"><b>Microsoft 365</b><span>8 月 49 筆行事曆紀錄・每日 11:30 站會</span></div>
+          <div class="it s1"><b>Notion</b><span>專案、任務、承諾台帳都在這</span></div>
+          <div class="it s1"><b>meeting-recorder</b><span>30 天 63 次提交，最投入的專案</span></div>
+          <div class="it s1"><b>排程 ×11</b><span>本機 9 ＋ 雲端 2，晨檢／稽核／同步</span></div>
+        </div>
+        <div class="zone">
+          <h3>可連未連<span class="c">・2</span></h3>
+          <div class="it s2"><b>公司資料平台</b><span>要跟管理者申請開通 →<br>開通後第一件事已寫進藍圖</span></div>
+          <div class="it s2"><b>Google Drive</b><span>已載入、未使用</span></div>
+        </div>
+        <div class="zone">
+          <h3>只有你有<span class="c">・2</span></h3>
+          <div class="it s3"><b>LINE 群組</b><span>夥伴的承諾與抱怨，量大、沒進系統、不能搜</span></div>
+          <div class="it s3"><b>個人任務追蹤</b><span>私藏檔，只有你的電腦有</span></div>
+        </div>
+        <div class="zone">
+          <h3>沒被記錄<span class="c">・2 → 1</span></h3>
+          <div class="it s4"><b>散會後追誰、放誰</b><span>優先順序，全在腦中</span></div>
+          <div class="it s1"><b>停滯的判準<span class="tag done">本次已萃取</span></b><span>「還有沒有在跑」——已寫進藍圖</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="src">來源　M365 行事曆（49 筆）· NOTION 最近頁面 · 本機 GIT LOG --SINCE=30DAYS · GET-SCHEDULEDTASK ×9 ＋ 雲端排程 ×2　｜　填滿度＝訊號狀態，不是重要性</div>
+  </section>
+
+  <section>
+    <h2>近 30 天你把力氣放在哪</h2>
+    <div class="card">
+      <div class="bar"><div class="lb">meeting-recorder</div><div class="tr"><div class="fl" style="width:100%;background:var(--g1)"></div></div><div class="vl">63</div></div>
+      <div class="bar"><div class="lb">meeting-room-map</div><div class="tr"><div class="fl" style="width:76%;background:var(--g3)"></div></div><div class="vl">48</div></div>
+      <div class="bar"><div class="lb">portfolio</div><div class="tr"><div class="fl" style="width:67%;background:var(--g4)"></div></div><div class="vl">42</div></div>
+      <p style="font-size:11.5px;color:var(--muted);margin-top:14px">你最投入的專案就是「把會議記下來」。這不是巧合——它是下面那個缺口的另一面：<b style="color:var(--ink)">記錄你已經做到頂了，斷掉的是記錄之後的判斷。</b></p>
+    </div>
+    <div class="src">來源　各專案 GIT LOG --SINCE=30DAYS · 提交次數</div>
+  </section>
+
+  <section>
+    <h2>每週的固定節奏</h2>
+    <div class="card">
+      <div class="week">
+        <div class="day"><div class="d">週一</div><div class="ev">11:30 站會<span>30 分 · 12 人</span></div></div>
+        <div class="day"><div class="d">週二</div><div class="ev">11:30 站會<span>30 分 · 12 人</span></div></div>
+        <div class="day"><div class="d">週三</div><div class="ev">11:30 站會<span>30 分 · 12 人</span></div></div>
+        <div class="day"><div class="d">週四</div><div class="ev">11:30 站會<span>30 分 · 12 人</span></div></div>
+        <div class="day"><div class="d">週五</div><div class="ev">11:30 站會<span>30 分 · 12 人</span></div></div>
+      </div>
+      <p style="font-size:11.5px;color:var(--muted);margin-top:14px">你是召集人。8 月另有 44 場非固定會議。<b style="color:var(--ink)">每天 30 分 × 12 人——這個節奏就是第二段選題的答案。</b></p>
+    </div>
+    <div class="src">來源　OUTLOOK 行事曆 · 2026 年 8 月 · 重複行程</div>
+  </section>
+
+  <section>
+    <div class="ceil">
+      <p>你的自動化天花板不是資料，是「你腦子裡的優先順序沒有被寫下來」。</p>
+      <p class="why">資料端你已經做完了別人要花一年的事（都進 Notion、有工具、有排程）。所以第二段我們不談收資料，直接挖那個沒被寫下來的判斷。</p>
+    </div>
+  </section>
+
+  <footer class="src">INTERVIEW-ME 訪談 · 第一段產出 · 2026-08-20 · 查得到的沒有問你，問你的都是查不到的　｜　視覺：MONO · 填滿度＝訊號 · 量級＝長度</footer>
+
+</div>
+</body>
+</html>
