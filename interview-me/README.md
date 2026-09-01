@@ -57,4 +57,3 @@ cp -r interview-me ~/.claude/skills/        # 個人層
 方睿科技（FUNRAISE）出品，出自「AI Raiser 先鋒計畫」第一堂課。
 **CC BY-NC 4.0** —— 自用免費、分享請註明出處、商業使用另需授權（見 repo 根目錄的 `NOTICE.md`）。
 原版與更新：https://github.com/Nelsen-funraise/context-interview
-「每答一題即記錄／存檔」的流程概念，曾受 Nate Herk 所分享之 grill-me（其原始版本為 Matt Pocock 所作）啟發；本專案之文字、架構及具體內容均另行設計與撰寫。

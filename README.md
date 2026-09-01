@@ -249,8 +249,6 @@ daily-brief/
 
 出自方睿科技「AI Raiser 先鋒計畫」，2026 台灣行銷年會《AI 時代的減法工作流》現場釋出。
 
-「每答一題即記錄／存檔」的流程概念，曾受 Nate Herk 所分享之 grill-me（其原始版本為 Matt Pocock 所作）啟發；本專案之文字、架構、問題設計及具體內容均另行設計與撰寫。
-
 ---
 
 <sub>© 2026 方睿科技股份有限公司 FUNRAISE Inc. · CC BY-NC 4.0</sub>
